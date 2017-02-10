@@ -21,7 +21,7 @@ WHEN '4' THEN 'HISPANIC'
 WHEN '5' THEN 'WHITE,NOT HISP'
 ELSE 'NO CODE FOUND'
 END AS 'Local Race Code',
-
+--Race Flags are kept in one field in 5 bites
 CASE SUBSTRING (Name_SW.[FED-RACE-FLAGS], 1,1)
 WHEN '0' THEN 'N'
 WHEN '1' THEN 'Y'
