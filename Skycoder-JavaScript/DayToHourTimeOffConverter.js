@@ -37,11 +37,17 @@ if ((trRequestHours.style.display == 'none')) {
     //For loop to build options variable for selection tool.
     for (i = 1; i <= NumberOfOptions; i++) {
         if (((HoursPerDay / NumberOfOptions) * i).toFixed(2) == HoursPerDay) {
-            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " Hours (WHOLE DAY)</option>";
+          options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" +
+          ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " " + "(" + parseInt(((HoursPerDay / NumberOfOptions) * i), 10) + " Hours and " +
+          (((((HoursPerDay / NumberOfOptions) * i).toFixed(2)) - (parseInt(((HoursPerDay / NumberOfOptions) * i), 10))) * 60) + " Minutes [WHOLE DAY])</option>";
         } else if (((HoursPerDay / NumberOfOptions) * i).toFixed(2) == (HoursPerDay / 2)) {
-            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " Hours (HALF DAY)</option>";
+          options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" +
+          ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " " + "(" + parseInt(((HoursPerDay / NumberOfOptions) * i), 10) + " Hours and " +
+          (((((HoursPerDay / NumberOfOptions) * i).toFixed(2)) - (parseInt(((HoursPerDay / NumberOfOptions) * i), 10))) * 60) + " Minutes [HALF DAY])</option>";
         } else {
-            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " Hours</option>";
+            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" +
+            ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " " + "(" + parseInt(((HoursPerDay / NumberOfOptions) * i), 10) + " Hours and " +
+            (((((HoursPerDay / NumberOfOptions) * i).toFixed(2)) - (parseInt(((HoursPerDay / NumberOfOptions) * i), 10))) * 60) + " Minutes)</option>";
         }
     }
     // Code to Insert the custom converter to the bottom of the time off date.
