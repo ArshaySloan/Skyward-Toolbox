@@ -17,7 +17,6 @@ for (h = 0; h <= 24; h++) {
     for (m = 0; m <= 59; m++) {
       if (document.documentElement.innerHTML.indexOf((SSpart1 + h + SSpart2 + m + SSPart3)) > 0) {
             var HoursPerDay = (h + (m / 60)).toFixed(2)
-            console.log(HoursPerDay);
             m = 60
             h = 25
         }
