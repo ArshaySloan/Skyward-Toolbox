@@ -73,7 +73,7 @@ if ((trRequestHours.style.display == 'none')) {
     //If requesting time back changes day to negative.
     function Negative_Balance() {
         if (Neg_Entry.checked == true) {
-            tDaysDec.value = (tDaysDec.value * -1);
+            tDaysDec.value = (tDaysDec.value * -1).toFixed(4);
         } else {
             tDaysDec.value = CCDays.value;
         }
