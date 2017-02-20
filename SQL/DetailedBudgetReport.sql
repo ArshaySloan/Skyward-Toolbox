@@ -1,7 +1,5 @@
 -- SQL used to generate report of budget information that can be droped to
 --excel.  Currently (02/20/2017) There is no way to do this within the system.
---keep in mind this will report on EVERY BUDGET TYPE.  If you want to limit
---which budget types are reported you will need to add that to the sql below.
 
 --2/20/2017 Added Nested SQL to get current Database
 --          Added statment to only report on selected budget types PR#1 PR#2
