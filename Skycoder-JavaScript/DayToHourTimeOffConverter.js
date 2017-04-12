@@ -9,6 +9,20 @@
 //Created by Arshay "Shay" Sloan @ GCISD
 
 // Variable Definition
+//Search Page for Hours Per day to populate HoursPerDay variable
+var SSpart1 = "Hours per Day: "
+var SSpart2 = "h "
+var SSPart3 = "m"
+for (h = 0; h <= 24; h++) {
+    for (m = 0; m <= 59; m++) {
+      if (document.documentElement.innerHTML.indexOf((SSpart1 + h + SSpart2 + m + SSPart3)) > 0) {
+            var HoursPerDay = (h + (m / 60)).toFixed(2)
+            console.log(HoursPerDay);
+            m = 60
+            h = 25
+        }
+    }
+}
 
 var NumberOfOptions = HoursPerDay * 4
 var part1 = "<table width='768'><tbody><tr><td><fieldset><legend class='FormTitle'>Hours to Day Conversion Tool</legend><br><br><div id='CustomCode' class=EditLabel'> Hours  to Convert</div><select id=CCHours type='text' name=HoursToConvert <option></option>"
@@ -17,25 +31,23 @@ var part2 = "</select><br><br><div id='CustomCode' class=EditLabel'> Converted D
 
 // If time off is in hours and not days ignore everything
 if ((trRequestHours.style.display == 'none')) {
-  if (document.documentElement.innerHTML.indexOf('Hours per Day: 7h 30m') > 0) {
-  var HoursPerDay = 7.5  
-  } else if {
-
-  } else {
-    alert('Unable to find hours per day! \n \n Please contact your system administrator.');
-    tDaysDec.disabled = true;
-  }
     // Used to disable the day field from being edited.
     tDaysDec.disabled = true;
 
     //For loop to build options variable for selection tool.
     for (i = 1; i <= NumberOfOptions; i++) {
         if (((HoursPerDay / NumberOfOptions) * i).toFixed(2) == HoursPerDay) {
-            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " Hours (WHOLE DAY)</option>";
+          options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" +
+          ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " " + "(" + parseInt(((HoursPerDay / NumberOfOptions) * i), 10) + " Hours and " +
+          (((((HoursPerDay / NumberOfOptions) * i).toFixed(2)) - (parseInt(((HoursPerDay / NumberOfOptions) * i), 10))) * 60) + " Minutes [WHOLE DAY])</option>";
         } else if (((HoursPerDay / NumberOfOptions) * i).toFixed(2) == (HoursPerDay / 2)) {
-            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " Hours (HALF DAY)</option>";
+          options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" +
+          ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " " + "(" + parseInt(((HoursPerDay / NumberOfOptions) * i), 10) + " Hours and " +
+          (((((HoursPerDay / NumberOfOptions) * i).toFixed(2)) - (parseInt(((HoursPerDay / NumberOfOptions) * i), 10))) * 60) + " Minutes [HALF DAY])</option>";
         } else {
-            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " Hours</option>";
+            options = options + "<option value='" + ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + "'>" +
+            ((HoursPerDay / NumberOfOptions) * i).toFixed(2) + " " + "(" + parseInt(((HoursPerDay / NumberOfOptions) * i), 10) + " Hours and " +
+            (((((HoursPerDay / NumberOfOptions) * i).toFixed(2)) - (parseInt(((HoursPerDay / NumberOfOptions) * i), 10))) * 60) + " Minutes)</option>";
         }
     }
     // Code to Insert the custom converter to the bottom of the time off date.
@@ -53,16 +65,16 @@ if ((trRequestHours.style.display == 'none')) {
     function convertHoursToDays() {
         CCDays.value = parseFloat(parseFloat(CCHours.value) / HoursPerDay).toFixed(4);
         tDaysDec.value = CCDays.value;
+        Negative_Balance();
         if (tDaysDec.value > .4999) {
             //Warning message for employees to use AESOP if a sub is needed.
             alert('Stop!\n\nYou are entering time off for a 1/2 day or more.  If a substitute was requested through AESOP, please discontinue this entry.  If no substitute was needed or requested, you may continue with your entry for time off in Skyward.\n\nEntering time off in AESOP AND Skyward will create duplicate requests and deduct your request twice from your available leave.');
         }
-        Negative_Balance();
     }
     //If requesting time back changes day to negative.
     function Negative_Balance() {
         if (Neg_Entry.checked == true) {
-            tDaysDec.value = (tDaysDec.value * -1);
+            tDaysDec.value = (tDaysDec.value * -1).toFixed(4);
         } else {
             tDaysDec.value = CCDays.value;
         }
