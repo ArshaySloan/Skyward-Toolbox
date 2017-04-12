@@ -1,6 +1,8 @@
--- SQL used to generate a budget detail report with descriptions.
---Currently SKYWARD has no report that can be dropped in excel.  When that
---report is created you ca nstop using this.
+-- SQL used to generate report of budget information that can be droped to
+--excel.  Currently (02/20/2017) There is no way to do this within the system.
+
+--2/20/2017 Added Nested SQL to get current Database
+--          Added statment to only report on selected budget types PR#1 PR#2
 
 --Created by Arshay "Shay" Sloan @ GCISD
 

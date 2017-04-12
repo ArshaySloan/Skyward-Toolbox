@@ -21,7 +21,7 @@ WHEN '4' THEN 'HISPANIC'
 WHEN '5' THEN 'WHITE,NOT HISP'
 ELSE 'NO CODE FOUND'
 END AS 'Local Race Code',
-
+--Race Flags are kept in one field in 5 bites
 CASE SUBSTRING (Name_SW.[FED-RACE-FLAGS], 1,1)
 WHEN '0' THEN 'N'
 WHEN '1' THEN 'Y'
@@ -58,6 +58,7 @@ INNER JOIN [SKYWARD_FINANCE].[SKYWARD].[PUB].[NAME] Name_SW
 ON Name_SW.[NAME-ID] = Assignment_SW.[NAME-ID]
 INNER JOIN [SKYWARD_FINANCE].[SKYWARD].[PUB].[HAAPRO-PROFILE] Profile_SW
 	on Profile_SW.[Name-ID] = Assignment_SW.[Name-ID]
+--Active employees only
 	AND Profile_SW.[HAAPRO-ACTIVE] = 1
 --Used to exclude stipends which are not consider employees.
 WHERE Assignment_SW.[haadsc-desc-pos] NOT LIKE '%STIPEND%'
