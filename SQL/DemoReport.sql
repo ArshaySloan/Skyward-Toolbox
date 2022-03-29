@@ -1,4 +1,4 @@
--- SQL used to report on demographic informaiton in skyward
+-- SQL used to report on demographic informaiton in Skyward
 
 
 --Created by Arshay "Shay" Sloan @ GCISD
